@@ -133,3 +133,13 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+from django.core.wsgi import get_wsgi_application
+
+# Add the project directory to the Python path
+path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if path not in os.sys.path:
+    os.sys.path.append(path)
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'secure_app.settings')
+
+application = get_wsgi_application()
