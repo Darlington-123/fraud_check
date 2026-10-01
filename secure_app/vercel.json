@@ -2,6 +2,10 @@
   "version": 2,
   "routes": [
     {
+      "src": "/favicon.ico",
+      "status": 204
+    },
+    {
       "src": "/(.*)",
       "dest": "secure_app/secure_app/wsgi.py"
     }
