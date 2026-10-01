@@ -133,13 +133,16 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
 import sys
 
-# Add the parent directory to Python path so modules resolve correctly
+# Add both the project directory and its parent to Python path
 current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.dirname(current_dir)
-if project_root not in sys.path:
-    sys.path.insert(0, project_root)
+parent_dir = os.path.dirname(current_dir)
+if current_dir not in sys.path:
+    sys.path.append(current_dir)
+if parent_dir not in sys.path:
+    sys.path.append(parent_dir)
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'secure_app.settings')
 
