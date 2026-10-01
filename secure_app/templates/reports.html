@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block content %}
+<form
+   
+    method="post"
+    action=""
+      enctype="multipart/form-data"
+      class="mx-auto max-w-3xl space-y-8 rounded-2xl bg-white p-10 shadow-md">
+      {% csrf_token %}
+    <!-- Entity type -->
+    <div>
+        <label for="id_entity_type"
+               class="mb-3 block text-base font-semibold text-slate-700">
+            What are you reporting?
+        </label>
+
+        <select name="entity_type"
+                id="id_entity_type"
+                required
+                class="w-full rounded-xl border border-slate-300 px-5 py-4 text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100">
+            <option value="phone">Phone Number / Mobile Money</option>
+            <option value="url">Website Link</option>
+            <option value="email">Email Address</option>
+            <option value="name">Individual / Business Name</option>
+        </select>
+    </div>
+
+    <!-- Value -->
+    <div>
+        <label for="id_value"
+               class="mb-3 block text-base font-semibold text-slate-700">
+            Number, link, email, or name
+        </label>
+
+        <input type="text"
+               name="value"
+               id="id_value"
+               placeholder="Example: +260 97 123 4567"
+               required
+               class="w-full rounded-xl border border-slate-300 px-5 py-4 text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100">
+    </div>
+
+    <!-- Scam category -->
+    <div>
+        <label for="id_scam_category"
+               class="mb-3 block text-base font-semibold text-slate-700">
+            Scam category
+        </label>
+
+        <select name="scam_category"
+                id="id_scam_category"
+                required
+                class="w-full rounded-xl border border-slate-300 px-5 py-4 text-base outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100">
+            <option value="momo">Fake Mobile Money Deposit / Request</option>
+            <option value="market">Facebook / Online Marketplace Fraud</option>
+            <option value="job">Fake Job Recruitment / Visa Scam</option>
+            <option value="loan">Rogue Online Loan App / Fee Scam</option>
+            <option value="other">Other Fraudulent Activity</option>
+        </select>
+    </div>
+
+    <!-- Description -->
+    <div>
+        <label for="id_description"
+               class="mb-3 block text-base font-semibold text-slate-700">
+            How did the suspected scam happen?
+        </label>
+
+        <textarea name="description"
+                  id="id_description"
+                  rows="12"
+                  required
+                  minlength="15"
+                  maxlength="1500"
+                  placeholder="Explain where you found the person or advert, what they asked you to do, whether money was sent, and what happened afterwards."
+                  class="w-full rounded-xl border border-slate-300 px-5 py-4 text-base leading-7 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"></textarea>
+    </div>
+
+    <!-- Evidence image -->
+    <div>
+        <label for="id_evidence_image"
+               class="mb-3 block text-base font-semibold text-slate-700">
+            Evidence image
+            <span class="font-normal text-slate-400">(optional)</span>
+        </label>
+
+        <input type="file"
+               name="evidence_image"
+               id="id_evidence_image"
+               accept="image/jpeg,image/png,image/webp"
+               class="block w-full rounded-xl border border-slate-300 bg-slate-50
+                      text-base text-slate-600
+                      file:mr-5 file:border-0 file:bg-blue-600 file:px-5
+                      file:py-4 file:text-base file:font-semibold file:text-white
+                      hover:file:bg-blue-700">
+
+        <p class="mt-3 text-sm text-slate-500">
+            JPG, PNG, or WEBP only. Maximum size: 5 MB.
+            Do not upload PINs, passwords, OTPs, bank-card details, or NRC numbers.
+        </p>
+    </div>
+
+    <!-- Confirmation -->
+    <div>
+        <label class="flex items-start gap-4 rounded-xl border border-slate-200 bg-slate-50 p-5">
+            <input type="checkbox"
+                   name="confirmation"
+                   id="id_confirmation"
+                   required
+                   class="mt-1.5 h-5 w-5 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+
+            <span class="text-base leading-7 text-slate-700">
+                I confirm that this information is truthful to the best of my knowledge.
+                I understand that reports are reviewed and are not automatic proof that
+                someone committed a crime.
+            </span>
+        </label>
+    </div>
+
+    <button type="submit"
+            class="w-full rounded-xl bg-blue-600 px-6 py-5 text-lg font-semibold
+                   text-white transition hover:bg-blue-700
+                   focus:outline-none focus:ring-4 focus:ring-blue-200">
+        Submit report for review
+    </button>
+</form>
+{% endblock %}

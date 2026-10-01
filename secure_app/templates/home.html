@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="bg-white w-full p-6 rounded-lg shadow-md mb-6">
+  <h1 class="text-2xl font-bold text-gray-800 mb-1">Is it a scam? Check first.</h1>
+  <p class="text-sm text-gray-500 mb-6">Search a phone number, link, email or name before you pay, click, or apply.</p>
+  <form method="get" class="flex gap-2">
+      {% csrf_token %}
+    <input type="text" name="q" value="{{ query }}"
+      placeholder="e.g. 0972653257"
+      class="shadow appearance-none border rounded flex-1 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+    <button type="submit"
+      class="bg-green-700 hover:bg-green-800 text-white font-bold text-sm py-2 px-5 rounded focus:outline-none focus:shadow-outline">
+      Check
+    </button>
+  </form>
+</div>
+{% endblock %}
