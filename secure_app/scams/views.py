@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect
 from .models import ScamReport, ScamEntity
 from django.contrib import messages
@@ -47,6 +48,13 @@ def report_view(request):
 
 
 def home_view(request):
-    return render(request, 'home.html')
+    query=request.GET.get('q', '').strip()
+    entity=None
+    search_results=None
+    if query:
+        search_results=True  
+        entity = ScamEntity.objects.filter(value__icontains=query)
+        context={'query': query, 'entity': entity, 'search_result': search_results}
+    return render(request, 'home.html', context)
 
 
