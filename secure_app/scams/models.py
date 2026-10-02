@@ -35,6 +35,10 @@ class ScamEntity(models.Model):
             self.status = 'clear'
         self.save()
 
+    @property
+    def approved_reports(self):
+            return self.reports.filter(review_status='approved').count()
+
 class ScamReport(models.Model):
     """
     Represents individual testimonies or reports submitted by citizens
