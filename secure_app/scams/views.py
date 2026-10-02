@@ -54,7 +54,7 @@ def home_view(request):
     if query:
         search_results=True  
         entity = ScamEntity.objects.filter(value__icontains=query)
-        context={'query': query, 'entity': entity, 'search_result': search_results}
+    context={'query': query, 'entity': entity, 'search_result': search_results}
     return render(request, 'home.html', context)
 
 
