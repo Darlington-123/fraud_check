@@ -70,5 +70,5 @@ class ScamReport(models.Model):
         return f"Report for {self.entity.value} ({self.get_scam_category_display()})"
 
 
-def __str__(self):
+    def __str__(self):
         return f"{self.entity_type} - {self.value}"
