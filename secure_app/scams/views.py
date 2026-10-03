@@ -50,11 +50,11 @@ def report_view(request):
 def home_view(request):
     query=request.GET.get('q', '').strip()
     entity=None
-    search_results=None
+    searched=None
     if query:
-        search_results=True  
-        entity = ScamEntity.objects.filter(value__icontains=query)
-    context={'query': query, 'entity': entity, 'search_result': search_results}
+        searched=True  
+        entity = ScamEntity.objects.filter(value__icontains=query).first()
+    context={'query': query, 'entity': entity, 'searched': searched}
     return render(request, 'home.html', context)
 
 
